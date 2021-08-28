@@ -1,0 +1,8 @@
+[build]
+target-dir = "build"
+target = "target.json"
+rustflags = ["-Clink-args=-Tlinker.ld"]
+
+[unstable]
+build-std = ["core"]
+build-std-features = ["compiler-builtins-mem"]
