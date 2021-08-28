@@ -2,10 +2,14 @@
 #![no_main]
 #![feature(asm)]
 
+#[macro_use]
+mod print;
+
 use core::panic::PanicInfo;
 
 #[panic_handler]
-fn panic(_info: &PanicInfo<'_>) -> ! {
+fn panic(info: &PanicInfo<'_>) -> ! {
+    println!("{}", info);
     abort();
 }
 
@@ -16,5 +20,7 @@ extern "C" fn abort() -> ! {
 
 #[no_mangle]
 extern "C" fn _start() -> ! {
+    print!("\x0C");
+    println!("Hello world!");
     todo!();
 }
